@@ -28,41 +28,37 @@ public class DetailsOfRepoActivity extends BaseActivity {
     ArrayList<String> typesOfFragments;
     private CustomPagerAdapter customPagerAdapter;
     UserRepoDetails userRepoDetails;
-    String titleToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_of_repo);
 
-
-
+        // Getting the object from Intent
         userRepoDetails = (UserRepoDetails) getIntent().getSerializableExtra(USER_REPO_DETAILS);
 
+        // Assigning fragment types in Arraylist for using in  TAB
         typesOfFragments = new ArrayList<String>(Arrays.asList("Commits", "Branches"));
 
+        // Setting toolbar title
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(userRepoDetails.getName());
 
-
-        titleToolbar =((UserRepoDetails)getIntent().getSerializableExtra(USER_REPO_DETAILS)).getName();
-        getSupportActionBar().setTitle(titleToolbar);
-
+        //Setting Adapter to Viewpager
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         customPagerAdapter = new CustomPagerAdapter(getSupportFragmentManager());
         assert viewPager != null;
         viewPager.setOffscreenPageLimit(2);
-
         viewPager.setAdapter(customPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
     }
 
 
+    // PagerAdapter for ViewPager
     class CustomPagerAdapter extends FragmentStatePagerAdapter {
 
         FragmentManager fragMan;
@@ -81,7 +77,6 @@ public class DetailsOfRepoActivity extends BaseActivity {
         public Fragment getItem(int position) {
 
             switch (position) {
-
                 case 0:
 
                     Log.d("CustomPagerAdapter", position + "");
@@ -96,7 +91,6 @@ public class DetailsOfRepoActivity extends BaseActivity {
                 default:
                     return null;
             }
-
 
         }
 
@@ -127,8 +121,6 @@ public class DetailsOfRepoActivity extends BaseActivity {
             }
             return "";
         }
-
-
     }
 
 

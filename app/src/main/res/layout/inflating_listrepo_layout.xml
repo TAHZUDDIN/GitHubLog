@@ -9,8 +9,7 @@
     android:paddingTop="4dp"
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
-    android:transitionName="profile"
-    >
+    android:transitionName="profile" >
 
   <LinearLayout
       android:layout_width="match_parent"
@@ -26,7 +25,6 @@
           android:layout_marginRight="-5dp"
           app:srcCompat="@drawable/icon_publicrepo_github"
           />
-      <!--android:src="@drawable/public_repo_img"-->
 
         <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +45,6 @@
                 android:maxLines="1"
                 android:ellipsize="end"/>
 
-            <!--android:textColor="@color/black"-->
 
 
             <TextView
@@ -62,7 +59,6 @@
                 android:ellipsize="end"
                />
 
-            <!--android:textColor="@color/black"-->
 
             <LinearLayout
                 android:layout_width="match_parent"

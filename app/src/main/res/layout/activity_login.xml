@@ -43,7 +43,6 @@
                       android:textSize="@dimen/font_xlarge"
                       android:layout_marginTop="@dimen/margin_xlarge"
                       />
-                  <!--android:textColor="@color/white"-->
 
 
               </RelativeLayout>
@@ -66,48 +65,7 @@
                       android:layout_width="0px"
                       android:layout_height="0px"/>
 
- <!---->
-                  <!--<android.support.design.widget.TextInputLayout-->
-                      <!--android:id="@+id/input_layout_name"-->
-                      <!--android:layout_width="match_parent"-->
-                      <!--android:layout_height="wrap_content"-->
-                      <!--android:theme="@style/TextLabel"-->
-                     <!--&gt;-->
-                      <!--&lt;!&ndash;android:textColorHint="@color/white"&ndash;&gt;-->
- <!---->
-                      <!--<EditText-->
-                          <!--android:id="@+id/input_name"-->
-                          <!--android:theme="@style/EditTextTheme"-->
-                          <!--android:layout_width="match_parent"-->
-                          <!--android:layout_height="wrap_content"-->
-                          <!--android:singleLine="true"-->
-                          <!--android:hint="Username or Email"-->
-                          <!--android:nextFocusUp="@id/input_name"-->
-                          <!--android:nextFocusLeft="@id/input_name"-->
-                          <!--android:textColor="@color/white"-->
-                          <!--android:textColorHint="@color/white"/>-->
-                  <!--</android.support.design.widget.TextInputLayout>-->
- <!---->
- <!---->
-                  <!--<android.support.design.widget.TextInputLayout-->
-                      <!--android:id="@+id/id_password"-->
-                      <!--android:layout_width="match_parent"-->
-                      <!--android:layout_height="wrap_content"-->
-                      <!--android:layout_marginTop="@dimen/margin_medium"-->
-                      <!--android:theme="@style/TextLabel">-->
- <!---->
-                      <!--<EditText-->
-                          <!--android:theme="@style/EditTextTheme"-->
-                          <!--android:id="@+id/id_passwordEditText"-->
-                          <!--android:layout_width="match_parent"-->
-                          <!--android:layout_height="wrap_content"-->
-                          <!--android:singleLine="true"-->
-                          <!--android:inputType="textPassword"-->
-                          <!--android:nextFocusUp="@id/id_passwordEditText"-->
-                          <!--android:nextFocusLeft="@id/id_passwordEditText"-->
-                          <!--android:hint="Password"-->
-                          <!--android:maxLines="1"/>-->
-                  <!--</android.support.design.widget.TextInputLayout>-->
+
 
 
 
@@ -145,16 +103,9 @@
 
               </LinearLayout>
 
-
-
-
-
-
-
        </LinearLayout>
 
     </FrameLayout>
-
 
 
 </RelativeLayout>

@@ -141,7 +141,6 @@ public class FragmentParticularRepoDetail extends Fragment implements AppRequest
     }
 
 
-    //    https://api.github.com/repos/TAHZUDDIN/hello-world/commits?access_token=81c8e4ebaa2321e42093612e480e9577ae4837cd
     public void getRepoCommitsAPI() {
         String accesstoken = GitLoginApplicationClass.getCommonSharedPreference().getString(Constants.ACCESS_TOKEN, "");
         String login = ((UserRepoDetails.Owner) userRepoDetails.getOwner()).getLogin();

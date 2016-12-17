@@ -37,7 +37,6 @@ import example.com.githublogin.vollyserverapis.GetUserDetails;
 import example.com.githublogin.vollyserverapis.GetUserRepos;
 
 
-
 public class UserProAndRepoActivity extends BaseActivity implements AppRequestListener, Constants, View.OnClickListener, StartActivityListener {
     WebView loginWeb;
     String uuid;
@@ -56,8 +55,10 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gson = new Gson();
         setContentView(R.layout.activity_login_and_sign_up);
+
+        //Getting ids of views
+        gson = new Gson();
         loginWeb = (WebView) findViewById(R.id.web_view);
         circularImage = (ImageView) findViewById(R.id.id_image);
         textViewName = (TextView) findViewById(R.id.id_name);
@@ -65,12 +66,15 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
         textViewFollowing = (TextView) findViewById(R.id.id_textview_following);
         appBarLayout = findViewById(R.id.appBarLayout);
         recyclerViewRepos = (RecyclerView) findViewById(R.id.id_recyclerView);
+
+        // Getting progressbar  view id
         setLoadingVariables();
+
+        //Redirecting to Github for user Authentication
         loginWeb.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                // Here put your code
                 Log.d("UserProAndRepoActivity", url);
                 code = (Uri.parse(url)).getQueryParameter("code");
                 state = (Uri.parse(url)).getQueryParameter("state");
@@ -78,6 +82,8 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
                 GitLoginApplicationClass.getCommonSharedPreference().edit().putString(Constants.STATE, state)
                         .putString(Constants.CODE, code).commit();
 
+                // To get User Access token required CODE and STATE, if we get it
+                //calling the function to Get Access Token
                 if (code != null && state != null && code.length() > 0 && state.length() > 0)
                     getAcessTokenAPI();
                 return false; //Allow WebView to load url
@@ -86,11 +92,12 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
 
         uuid = UUID.randomUUID().toString();
         Log.d("UserProAndRepoActivity", uuid);
+
+        //If User is not Logged in then sending to Github for Authentication
         if (!GitLoginApplicationClass.getCommonSharedPreference().getBoolean(LOGGEDIN_OR_NOT, false)) {
             loginWeb.loadUrl("https://github.com/login/oauth/authorize?client_id=" + getResources().getString(R.string.github_client_id)
                     + "&redirect_uri=https://github.com&scope=repo&state=" + uuid + "&allow_signup=false");
-        } else
-        {
+        } else {
             acess_token = GitLoginApplicationClass.getCommonSharedPreference().getString(Constants.ACCESS_TOKEN, null);
             getUserDetailAPI();
         }
@@ -121,22 +128,17 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
     }
 
 
-
-
     // Methods of the Volley
     @Override
     public <T> void onRequestStarted(BaseTask<T> request) {
-
         Log.d("REQUEST STARTED", "=======REQUEST STARTED");
         loginWeb.setVisibility(View.GONE);
         showLoadingScreen();
-
     }
 
     @Override
     public <T> void onRequestCompleted(BaseTask<T> request) {
-
-
+        // Checking the API call tag first
         if (request.getRequestTag().equalsIgnoreCase(ID_GET_ACCESS_TOKEN)) {
             if (((GetAccessToken) request).getAccessTokenString() != null) {
                 Log.d("REQUEST COMPLETED", "=======REQUEST COMPLETED ACCESS TOKEN");
@@ -150,6 +152,7 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
 
         }
 
+        // Checking the API call tag
         if (request.getRequestTag().equalsIgnoreCase(ID_GET_USER_DETAILS)) {
             if (((GetUserDetails) request).getDataObject() != null) {
                 Log.d("REQUEST COMPLETED", "=======REQUEST COMPLETED USER DETAILS");
@@ -181,6 +184,7 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
             }
         }
 
+        // Checking the API call tag
         if (request.getRequestTag().equalsIgnoreCase(ID_GET_USER_REPOS)) {
             if (((GetUserRepos) request).getDataObject() != null) {
                 Log.d("REQUEST COMPLETED", "=======REQUEST COMPLETED LIST OF REPO");
@@ -193,6 +197,7 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
 
     }
 
+    // Volley method which is called on API request failed
     @Override
     public <T> void onRequestFailed(BaseTask<T> request) {
 
@@ -203,7 +208,6 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
 
     // Init AND Call Adapter
     public void initAdapterAndCall() {
-
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewRepos.setLayoutManager(linearLayoutManager);
@@ -220,35 +224,32 @@ public class UserProAndRepoActivity extends BaseActivity implements AppRequestLi
         Intent i = new Intent(UserProAndRepoActivity.this, DetailsOfRepoActivity.class);
         i.putExtra(USER_REPO_DETAILS, userRepoDetails);
 
-        if (Build.VERSION.SDK_INT >= 21)
-        {
+        //Check the version for Lollipop and ghigher for transition animation to work
+        if (Build.VERSION.SDK_INT >= 21) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation(this, v, "profile");
-            startActivity(i,options.toBundle());
-        }
-        else
-        {
+            startActivity(i, options.toBundle());
+        } else {
             startActivity(i);
         }
-
-
     }
 
 
     // API calls
-
     public void getAcessTokenAPI() {
         String url = "https://github.com/login/oauth/access_token";
         AllUser.getInstance().getAcessTokenPOST(url, UserProAndRepoActivity.this, UserProAndRepoActivity.this, getParametersForAccessTokens());
     }
 
 
+    //To get the user details
     public void getUserDetailAPI() {
         String url = "https://api.github.com/user?access_token=" + acess_token;
         AllUser.getInstance().getUserDetailGET(url, UserProAndRepoActivity.this, UserProAndRepoActivity.this);
     }
 
 
+    // To get the user repo details
     public void getUserRepoAPI() {
         Log.d("getUserRepoAPI", "=======getUserRepoAPI");
         String url = "https://api.github.com/users/" + userDetails.getLogin() + "/subscriptions?access_token=" + acess_token;

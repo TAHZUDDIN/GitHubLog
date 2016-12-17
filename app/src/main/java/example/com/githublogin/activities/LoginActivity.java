@@ -22,29 +22,26 @@ public class LoginActivity extends AppCompatActivity implements Constants {
 
         loginCardView = (CardView) findViewById(R.id.id_cardView_Login);
 
-        if (!GitLoginApplicationClass.getCommonSharedPreference().getBoolean(LOGGEDIN_OR_NOT, false))
-        {
+
+        // Checking the boolean value to check whether user is logged in or not
+        if (!GitLoginApplicationClass.getCommonSharedPreference().getBoolean(LOGGEDIN_OR_NOT, false)) {
 
             loginCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view)
-                {
+                public void onClick(View view) {
                     startActivityMethod();
-
                 }
             });
 
-        } else {
-
+        } else
+        {
             startActivityMethod();
-
         }
 
     }
 
 
-    public void startActivityMethod()
-    {
+    public void startActivityMethod() {
         Intent i = new Intent(LoginActivity.this, UserProAndRepoActivity.class);
         startActivity(i);
         finish();

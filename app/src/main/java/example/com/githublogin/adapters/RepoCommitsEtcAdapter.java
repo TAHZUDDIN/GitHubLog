@@ -69,7 +69,7 @@ public class RepoCommitsEtcAdapter extends RecyclerView.Adapter<RepoCommitsEtcAd
             String name = repoCommits.getCommit().getCommitter().getName();
 
             String date = repoCommits.getCommit().getCommitter().getDate();
-            date = date.substring(0,10);
+            date = date.substring(0, 10);
 
             sha = sha.substring(0, 10);
             holder.name.setText(message);

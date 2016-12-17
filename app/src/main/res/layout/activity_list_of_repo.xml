@@ -9,39 +9,32 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:background="@color/color_blue_theme"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_blue_theme">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="@dimen/font_large"
-            android:textStyle="bold"
-            android:text=""/>
+            android:textStyle="bold" />
 
 
-        </android.support.v7.widget.Toolbar>
+    </android.support.v7.widget.Toolbar>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/id_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        >
-
-
+        android:layout_below="@+id/toolbar">
 
     </android.support.v7.widget.RecyclerView>
 
 
-    <include
-        layout="@layout/loading_screen"
-        />
-
-
+    <include layout="@layout/loading_screen" />
 
 
 </RelativeLayout>

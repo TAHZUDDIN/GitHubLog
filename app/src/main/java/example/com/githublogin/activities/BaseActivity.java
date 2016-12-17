@@ -25,7 +25,6 @@ public class BaseActivity extends AppCompatActivity implements Constants {
 
     ProgressDialog progressDialog;
     Activity activity;
-//    ProgressBar progressBar;
     View progressBar;
     TextView nullCaseView;
     private View loadingScreen;
@@ -109,26 +108,19 @@ public class BaseActivity extends AppCompatActivity implements Constants {
 
     }
 
+    //Getting ids of ProgressBar
     public void setLoadingVariables() {
-//        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar =  findViewById(R.id.progress_bar);
         nullCaseView = (TextView) findViewById(R.id.null_case_view);
-//        loadingScreen = findViewById(R.id.loading_screen);
     }
 
+    // To show ProgressBar when required
     public void showLoadingScreen() {
-//        loadingScreen.setVisibility(View.VISIBLE);
-//        loadingScreen.setAlpha((float) 0.2);
         progressBar.setVisibility(View.VISIBLE);
         nullCaseView.setVisibility(View.GONE);
     }
 
-
-
-//    public void showMainView() {
-//        loadingScreen.setVisibility(View.GONE);
-//    }
-
+    //To show view after successuful API calling
     public void showMainView() {
         progressBar.setVisibility(View.GONE);
     }
@@ -139,7 +131,6 @@ public class BaseActivity extends AppCompatActivity implements Constants {
         progressBar.setVisibility(View.GONE);
         nullCaseView.setVisibility(View.VISIBLE);
         nullCaseView.setText(text);
-
     }
 }
 

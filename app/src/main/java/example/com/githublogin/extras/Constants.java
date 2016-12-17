@@ -3,6 +3,7 @@ package example.com.githublogin.extras;
 
 public interface Constants {
 
+    //Constants to use in API calls as identifiers and with intents
     String ID_GET_ACCESS_TOKEN = "id_get_access_token";
     String ID_GET_USER_DETAILS = "id_get_useer_details";
     String ID_GET_USER_REPOS = "id_get_useer_repos";
