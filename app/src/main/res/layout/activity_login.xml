@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_blue_theme_light"
+    tools:context=".activities.UserProAndRepoActivity">
+     <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:layout_marginRight="@dimen/margin_large"
+           android:layout_marginLeft="@dimen/margin_large"
+           android:layout_marginTop="@dimen/margin_xlarge">
+
+              <RelativeLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_marginTop="@dimen/margin_xlarge"
+                  >
+
+                 <ImageView
+                     android:id="@+id/id_imageGithub"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/github_icon"
+                     android:layout_centerHorizontal="true"
+                     />
+
+                      <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/id_imageGithub"
+                      android:text="Sign in to GitHub"
+
+                      android:gravity="center_horizontal"
+                      android:textSize="@dimen/font_xlarge"
+                      android:layout_marginTop="@dimen/margin_xlarge"
+                      />
+                  <!--android:textColor="@color/white"-->
+
+
+              </RelativeLayout>
+
+
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_marginTop="@dimen/margin_large">
+
+
+                  <!-- empty 4 Focus-->
+                  <LinearLayout
+                      android:id="@+id/linearLayout_focusable"
+                      android:orientation="vertical"
+                      android:focusable="true"
+                      android:focusableInTouchMode="true"
+                      android:layout_width="0px"
+                      android:layout_height="0px"/>
+
+ <!---->
+                  <!--<android.support.design.widget.TextInputLayout-->
+                      <!--android:id="@+id/input_layout_name"-->
+                      <!--android:layout_width="match_parent"-->
+                      <!--android:layout_height="wrap_content"-->
+                      <!--android:theme="@style/TextLabel"-->
+                     <!--&gt;-->
+                      <!--&lt;!&ndash;android:textColorHint="@color/white"&ndash;&gt;-->
+ <!---->
+                      <!--<EditText-->
+                          <!--android:id="@+id/input_name"-->
+                          <!--android:theme="@style/EditTextTheme"-->
+                          <!--android:layout_width="match_parent"-->
+                          <!--android:layout_height="wrap_content"-->
+                          <!--android:singleLine="true"-->
+                          <!--android:hint="Username or Email"-->
+                          <!--android:nextFocusUp="@id/input_name"-->
+                          <!--android:nextFocusLeft="@id/input_name"-->
+                          <!--android:textColor="@color/white"-->
+                          <!--android:textColorHint="@color/white"/>-->
+                  <!--</android.support.design.widget.TextInputLayout>-->
+ <!---->
+ <!---->
+                  <!--<android.support.design.widget.TextInputLayout-->
+                      <!--android:id="@+id/id_password"-->
+                      <!--android:layout_width="match_parent"-->
+                      <!--android:layout_height="wrap_content"-->
+                      <!--android:layout_marginTop="@dimen/margin_medium"-->
+                      <!--android:theme="@style/TextLabel">-->
+ <!---->
+                      <!--<EditText-->
+                          <!--android:theme="@style/EditTextTheme"-->
+                          <!--android:id="@+id/id_passwordEditText"-->
+                          <!--android:layout_width="match_parent"-->
+                          <!--android:layout_height="wrap_content"-->
+                          <!--android:singleLine="true"-->
+                          <!--android:inputType="textPassword"-->
+                          <!--android:nextFocusUp="@id/id_passwordEditText"-->
+                          <!--android:nextFocusLeft="@id/id_passwordEditText"-->
+                          <!--android:hint="Password"-->
+                          <!--android:maxLines="1"/>-->
+                  <!--</android.support.design.widget.TextInputLayout>-->
+
+
+
+                  <android.support.v7.widget.CardView
+                      android:id="@+id/id_cardView_Login"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      app:cardBackgroundColor="@color/color_blue_theme"
+                      android:layout_marginTop="@dimen/margin_45dp"
+                      >
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="LOG IN"
+                          android:layout_gravity="center_horizontal"
+                          android:textColor="@color/black"
+                          android:layout_margin="@dimen/margin_medium"/>
+
+                  </android.support.v7.widget.CardView>
+
+
+
+                      <TextView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:text="@string/redirected_to"
+                          android:layout_gravity="center_horizontal"
+                          android:gravity="center_horizontal"
+                          android:textColor="@color/white"
+                          android:textSize="@dimen/font_small"
+                          android:layout_margin="@dimen/margin_mini"/>
+
+
+
+              </LinearLayout>
+
+
+
+
+
+
+
+       </LinearLayout>
+
+    </FrameLayout>
+
+
+
+</RelativeLayout>

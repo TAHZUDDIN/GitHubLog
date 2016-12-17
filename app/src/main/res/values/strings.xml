@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GithubLogin</string>
+    <string name="github_client_id">d9e09d2067d7d831bc37</string>
+    <string name="redirected_to">You will be redirected to Github for authentication</string>
+</resources>
